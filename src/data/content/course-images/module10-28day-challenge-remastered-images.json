@@ -1,0 +1,622 @@
+{
+  "courseSlug": "module10-28day-challenge",
+  "createdAt": "2026-02-22T22:03:48.296Z",
+  "lessons": [
+    {
+      "lessonId": "day-1",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter1-foundation",
+      "images": [
+        {
+          "query": "ChatGPT interface screenshot",
+          "position": "cover",
+          "alt": "day-1 hero image"
+        },
+        {
+          "query": "OpenAI logo blue green",
+          "position": "inline-1",
+          "alt": "day-1 section image 1"
+        },
+        {
+          "query": "AI chat conversation interface",
+          "position": "inline-2",
+          "alt": "day-1 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-2",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter1-foundation",
+      "images": [
+        {
+          "query": "ChatGPT settings interface",
+          "position": "cover",
+          "alt": "day-2 hero image"
+        },
+        {
+          "query": "AI conversation threads organized",
+          "position": "inline-1",
+          "alt": "day-2 section image 1"
+        },
+        {
+          "query": "productivity workspace digital tools",
+          "position": "inline-2",
+          "alt": "day-2 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-3",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter1-foundation",
+      "images": [
+        {
+          "query": "Claude AI Anthropic interface",
+          "position": "cover",
+          "alt": "day-3 hero image"
+        },
+        {
+          "query": "AI assistant conversation clean",
+          "position": "inline-1",
+          "alt": "day-3 section image 1"
+        },
+        {
+          "query": "document analysis professional",
+          "position": "inline-2",
+          "alt": "day-3 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-4",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter1-foundation",
+      "images": [
+        {
+          "query": "Claude Projects feature screenshot",
+          "position": "cover",
+          "alt": "day-4 hero image"
+        },
+        {
+          "query": "AI workspace organized documents",
+          "position": "inline-1",
+          "alt": "day-4 section image 1"
+        },
+        {
+          "query": "coding artifacts development",
+          "position": "inline-2",
+          "alt": "day-4 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-5",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter1-foundation",
+      "images": [
+        {
+          "query": "Google Gemini interface",
+          "position": "cover",
+          "alt": "day-5 hero image"
+        },
+        {
+          "query": "Google AI assistant multimodal",
+          "position": "inline-1",
+          "alt": "day-5 section image 1"
+        },
+        {
+          "query": "Google Workspace integration",
+          "position": "inline-2",
+          "alt": "day-5 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-6",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter1-foundation",
+      "images": [
+        {
+          "query": "Google Workspace integration",
+          "position": "cover",
+          "alt": "day-6 hero image"
+        },
+        {
+          "query": "Gmail Docs Sheets workflow",
+          "position": "inline-1",
+          "alt": "day-6 section image 1"
+        },
+        {
+          "query": "Gemini extensions settings",
+          "position": "inline-2",
+          "alt": "day-6 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-7",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter1-foundation",
+      "images": [
+        {
+          "query": "Gemini Google AI research workspace interface",
+          "position": "cover",
+          "alt": "day-7 hero image"
+        },
+        {
+          "query": "research citations sources",
+          "position": "inline-1",
+          "alt": "day-7 section image 1"
+        },
+        {
+          "query": "fact checking verification",
+          "position": "inline-2",
+          "alt": "day-7 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-8",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter1-foundation",
+      "images": [
+        {
+          "query": "decision framework tools",
+          "position": "cover",
+          "alt": "day-8 hero image"
+        },
+        {
+          "query": "AI toolkit selection",
+          "position": "inline-1",
+          "alt": "day-8 section image 1"
+        },
+        {
+          "query": "workflow decision tree",
+          "position": "inline-2",
+          "alt": "day-8 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-9",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter2-concepts",
+      "images": [
+        {
+          "query": "framework diagram",
+          "position": "cover",
+          "alt": "day-9 hero image"
+        },
+        {
+          "query": "prompt engineering structure",
+          "position": "inline-1",
+          "alt": "day-9 section image 1"
+        },
+        {
+          "query": "communication framework",
+          "position": "inline-2",
+          "alt": "day-9 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-10",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter2-concepts",
+      "images": [
+        {
+          "query": "professional expertise",
+          "position": "cover",
+          "alt": "day-10 hero image"
+        },
+        {
+          "query": "step by step process",
+          "position": "inline-1",
+          "alt": "day-10 section image 1"
+        },
+        {
+          "query": "learning by example",
+          "position": "inline-2",
+          "alt": "day-10 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-11",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter3-career",
+      "images": [
+        {
+          "query": "strategic thinking brainstorming",
+          "position": "cover",
+          "alt": "day-11 hero image"
+        },
+        {
+          "query": "AI collaboration workspace",
+          "position": "inline-1",
+          "alt": "day-11 section image 1"
+        },
+        {
+          "query": "decision making process",
+          "position": "inline-2",
+          "alt": "day-11 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-12",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter3-career",
+      "images": [
+        {
+          "query": "professional resume document",
+          "position": "cover",
+          "alt": "day-12 hero image"
+        },
+        {
+          "query": "career improvement growth",
+          "position": "inline-1",
+          "alt": "day-12 section image 1"
+        },
+        {
+          "query": "job application success",
+          "position": "inline-2",
+          "alt": "day-12 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-13",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter3-career",
+      "images": [
+        {
+          "query": "job interview preparation",
+          "position": "cover",
+          "alt": "day-13 hero image"
+        },
+        {
+          "query": "professional conversation practice",
+          "position": "inline-1",
+          "alt": "day-13 section image 1"
+        },
+        {
+          "query": "confident candidate interview",
+          "position": "inline-2",
+          "alt": "day-13 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-14",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter3-career",
+      "images": [
+        {
+          "query": "LinkedIn professional profile",
+          "position": "cover",
+          "alt": "day-14 hero image"
+        },
+        {
+          "query": "personal branding social media",
+          "position": "inline-1",
+          "alt": "day-14 section image 1"
+        },
+        {
+          "query": "professional networking online",
+          "position": "inline-2",
+          "alt": "day-14 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-15",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter3-career",
+      "images": [
+        {
+          "query": "career planning strategy",
+          "position": "cover",
+          "alt": "day-15 hero image"
+        },
+        {
+          "query": "professional development roadmap",
+          "position": "inline-1",
+          "alt": "day-15 section image 1"
+        },
+        {
+          "query": "long-term career vision",
+          "position": "inline-2",
+          "alt": "day-15 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-16",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter4-business",
+      "images": [
+        {
+          "query": "business idea validation",
+          "position": "cover",
+          "alt": "day-16 hero image"
+        },
+        {
+          "query": "market research analysis",
+          "position": "inline-1",
+          "alt": "day-16 section image 1"
+        },
+        {
+          "query": "startup competitor research",
+          "position": "inline-2",
+          "alt": "day-16 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-17",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter4-business",
+      "images": [
+        {
+          "query": "market research dashboard",
+          "position": "cover",
+          "alt": "day-17 hero image"
+        },
+        {
+          "query": "competitive analysis charts",
+          "position": "inline-1",
+          "alt": "day-17 section image 1"
+        },
+        {
+          "query": "business intelligence data",
+          "position": "inline-2",
+          "alt": "day-17 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-18",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter4-business",
+      "images": [
+        {
+          "query": "content calendar planning",
+          "position": "cover",
+          "alt": "day-18 hero image"
+        },
+        {
+          "query": "blog writing workspace",
+          "position": "inline-1",
+          "alt": "day-18 section image 1"
+        },
+        {
+          "query": "social media content creation",
+          "position": "inline-2",
+          "alt": "day-18 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-19",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter4-business",
+      "images": [
+        {
+          "query": "copywriting workspace",
+          "position": "cover",
+          "alt": "day-19 hero image"
+        },
+        {
+          "query": "email marketing campaign",
+          "position": "inline-1",
+          "alt": "day-19 section image 1"
+        },
+        {
+          "query": "landing page design",
+          "position": "inline-2",
+          "alt": "day-19 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-20",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter4-business",
+      "images": [
+        {
+          "query": "customer research analysis",
+          "position": "cover",
+          "alt": "day-20 hero image"
+        },
+        {
+          "query": "support team professional",
+          "position": "inline-1",
+          "alt": "day-20 section image 1"
+        },
+        {
+          "query": "customer feedback data visualization",
+          "position": "inline-2",
+          "alt": "day-20 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-21",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter5-personal",
+      "images": [
+        {
+          "query": "online learning education",
+          "position": "cover",
+          "alt": "day-21 hero image"
+        },
+        {
+          "query": "AI tutoring personal coach",
+          "position": "inline-1",
+          "alt": "day-21 section image 1"
+        },
+        {
+          "query": "skill development growth",
+          "position": "inline-2",
+          "alt": "day-21 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-22",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter5-personal",
+      "images": [
+        {
+          "query": "fitness planning workout",
+          "position": "cover",
+          "alt": "day-22 hero image"
+        },
+        {
+          "query": "healthy meal preparation",
+          "position": "inline-1",
+          "alt": "day-22 section image 1"
+        },
+        {
+          "query": "wellness lifestyle balance",
+          "position": "inline-2",
+          "alt": "day-22 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-23",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter5-personal",
+      "images": [
+        {
+          "query": "personal finance budget planning",
+          "position": "cover",
+          "alt": "day-23 hero image"
+        },
+        {
+          "query": "expense tracking spreadsheet",
+          "position": "inline-1",
+          "alt": "day-23 section image 1"
+        },
+        {
+          "query": "financial planning calculator",
+          "position": "inline-2",
+          "alt": "day-23 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-24",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter5-personal",
+      "images": [
+        {
+          "query": "thoughtful conversation planning",
+          "position": "cover",
+          "alt": "day-24 hero image"
+        },
+        {
+          "query": "empathy communication",
+          "position": "inline-1",
+          "alt": "day-24 section image 1"
+        },
+        {
+          "query": "difficult conversation preparation",
+          "position": "inline-2",
+          "alt": "day-24 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-25",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter5-personal",
+      "images": [
+        {
+          "query": "creative brainstorming ideas",
+          "position": "cover",
+          "alt": "day-25 hero image"
+        },
+        {
+          "query": "hobby project workspace",
+          "position": "inline-1",
+          "alt": "day-25 section image 1"
+        },
+        {
+          "query": "artistic inspiration collage",
+          "position": "inline-2",
+          "alt": "day-25 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-26",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter6-mastery",
+      "images": [
+        {
+          "query": "workflow system diagram",
+          "position": "cover",
+          "alt": "day-26 hero image"
+        },
+        {
+          "query": "productivity tools integrated",
+          "position": "inline-1",
+          "alt": "day-26 section image 1"
+        },
+        {
+          "query": "system thinking flowchart",
+          "position": "inline-2",
+          "alt": "day-26 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-27",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter6-mastery",
+      "images": [
+        {
+          "query": "daily habits routine",
+          "position": "cover",
+          "alt": "day-27 hero image"
+        },
+        {
+          "query": "consistent practice growth",
+          "position": "inline-1",
+          "alt": "day-27 section image 1"
+        },
+        {
+          "query": "long term success journey",
+          "position": "inline-2",
+          "alt": "day-27 section image 2"
+        }
+      ]
+    },
+    {
+      "lessonId": "day-28",
+      "moduleId": "module10-28day-challenge",
+      "chapterId": "chapter6-mastery",
+      "images": [
+        {
+          "query": "roadmap journey forward",
+          "position": "cover",
+          "alt": "day-28 hero image"
+        },
+        {
+          "query": "90 day plan timeline",
+          "position": "inline-1",
+          "alt": "day-28 section image 1"
+        },
+        {
+          "query": "strategic planning horizon",
+          "position": "inline-2",
+          "alt": "day-28 section image 2"
+        }
+      ]
+    }
+  ]
+}

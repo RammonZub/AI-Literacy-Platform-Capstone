@@ -1,0 +1,13 @@
+# Replace Host and Sitemap URL with your public deployment origin.
+
+User-agent: *
+Allow: /
+
+# Non-public or sensitive surfaces
+Disallow: /api/
+Disallow: /auth/
+Disallow: /checkout/
+Disallow: /platform/
+
+Host: https://REPLACE_WITH_PUBLIC_SITE_URL
+Sitemap: https://REPLACE_WITH_PUBLIC_SITE_URL/sitemap.xml

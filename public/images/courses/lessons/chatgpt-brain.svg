@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <!-- Brain outline -->
+  <path d="M400 150 C350 150, 300 200, 300 280 C300 350, 320 400, 350 420 L350 450 C350 470, 380 480, 420 480 C460 480, 500 470, 520 450 L520 420 C550 400, 580 350, 580 280 C580 200, 530 150, 480 150 C440 150, 420 160, 400 150 Z"
+        fill="none" stroke="#10A37F" stroke-width="4"/>
+  <!-- Neural pathways - ChatGPT green -->
+  <circle cx="400" cy="250" r="8" fill="#10A37F"/>
+  <circle cx="480" cy="280" r="8" fill="#10A37F"/>
+  <circle cx="440" cy="320" r="8" fill="#10A37F"/>
+  <circle cx="520" cy="350" r="8" fill="#10A37F"/>
+  <circle cx="360" cy="380" r="8" fill="#10A37F"/>
+  <!-- Connection lines -->
+  <line x1="400" y1="250" x2="480" y2="280" stroke="#10A37F" stroke-width="3"/>
+  <line x1="480" y1="280" x2="440" y2="320" stroke="#10A37F" stroke-width="3"/>
+  <line x1="440" y1="320" x2="520" y2="350" stroke="#10A37F" stroke-width="3"/>
+  <line x1="440" y1="320" x2="360" y2="380" stroke="#10A37F" stroke-width="3"/>
+  <line x1="480" y1="280" x2="520" y2="350" stroke="#10A37F" stroke-width="3"/>
+  <!-- Circuit nodes -->
+  <rect x="600" y="200" width="60" height="40" rx="5" fill="none" stroke="#10A37F" stroke-width="3"/>
+  <rect x="700" y="280" width="60" height="40" rx="5" fill="none" stroke="#10A37F" stroke-width="3"/>
+  <rect x="650" y="380" width="60" height="40" rx="5" fill="none" stroke="#10A37F" stroke-width="3"/>
+  <!-- Circuit connections -->
+  <line x1="520" y1="350" x2="600" y2="220" stroke="#10A37F" stroke-width="2"/>
+  <line x1="660" y1="220" x2="700" y2="300" stroke="#10A37F" stroke-width="2"/>
+  <line x1="700" y1="320" x2="680" y2="380" stroke="#10A37F" stroke-width="2"/>
+</svg>

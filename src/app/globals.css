@@ -1,0 +1,1822 @@
+/**
+ * Global Styles & Design System
+ *
+ * PURPOSE: Central design system with CSS variables for modern gem theming
+ *
+ * CONTEXT: The app uses a clean modern design with white background, black gradients,
+ * gem blue accents, and soft shadows. Theme colors are set dynamically via JavaScript
+ * (ThemeProvider) but fall back to the modern gem default theme.
+ *
+ * KEY RESPONSIBILITIES:
+ * - Define CSS custom properties for all theme colors
+ * - Set up typography (system fonts, Geist Mono)
+ * - Provide base styles and animations
+ * - Clean, modern aesthetic with gem-like colors
+ *
+ * IMPLEMENTATION NOTES:
+ * - CSS variables are set by ThemeProvider on mount
+ * - Default values match the modern gem theme
+ * - Tailwind v4 uses @theme inline for configuration
+ * - All colors reference CSS variables for dynamic theming
+ *
+ * DESIGN PHILOSOPHY:
+ * - White background for clean aesthetic
+ * - Black gradients for premium "gem" feel
+ * - Gem blue accents for CTAs
+ * - Muted/desaturated semantic colors
+ * - Professional and modern
+ *
+ * @see components/providers/ThemeProvider.tsx for theme application
+ * @see data/design/tokens.ts for design token definitions
+ */
+
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
+/*---break---
+ */
+
+@theme inline {
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height, var(--accordion-panel-height, auto));
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height, var(--accordion-panel-height, auto));
+    }
+
+    to {
+      height: 0;
+    }
+  }
+}
+
+@custom-variant data-open {
+  &:where([data-state="open"]),
+  &:where([data-open]:not([data-open="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-closed {
+  &:where([data-state="closed"]),
+  &:where([data-closed]:not([data-closed="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-checked {
+  &:where([data-state="checked"]),
+  &:where([data-checked]:not([data-checked="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-unchecked {
+  &:where([data-state="unchecked"]),
+  &:where([data-unchecked]:not([data-unchecked="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-selected {
+  &:where([data-selected="true"]) {
+    @slot;
+  }
+}
+
+@custom-variant data-disabled {
+  &:where([data-disabled="true"]),
+  &:where([data-disabled]:not([data-disabled="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-active {
+  &:where([data-state="active"]),
+  &:where([data-active]:not([data-active="false"])) {
+    @slot;
+  }
+}
+
+@custom-variant data-horizontal {
+  &:where([data-orientation="horizontal"]) {
+    @slot;
+  }
+}
+
+@custom-variant data-vertical {
+  &:where([data-orientation="vertical"]) {
+    @slot;
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   DESIGN TOKENS - CSS Variables
+   ============================================ */
+
+@theme inline {
+  /* ==========================================
+     TYPOGRAPHY
+     ========================================== */
+
+  /* Font families - system fonts for native feel, Geist Mono for code */
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* Georgia serif for Brilliant-style editorial headings */
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif-display: var(--font-serif-display);
+  --font-mono: var(--font-geist-mono);
+
+  /* Font sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ==========================================
+     THEME COLORS (Black/Gray Scale + Green for Completed)
+     ========================================== */
+
+  /* Core colors - Pure White Mode */
+  --background: #FFFFFF;
+  --foreground: #000000;
+  --card: #FFFFFF;
+  --card-foreground: #000000;
+
+  /* Dark card (for image overlays) */
+  --card-dark: #1C1C1E;
+  --card-dark-foreground: #FFFFFF;
+
+  /* Primary accent (Blue 600 - brighter, more vibrant) */
+  --primary: oklch(0.55 0.2 260);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary accent (Light gray background) */
+  --secondary: #F5F5F7;
+  --secondary-foreground: #000000;
+
+  /* Muted */
+  --muted: #F5F5F7;
+  --muted-foreground: #A0A0A8;
+
+  /* Border */
+  --border: #E8E8EB;
+
+  /* Green - ONLY for completed lessons */
+  --success: #5BA387;
+  --warning: #E5B05C;
+  --error: #D46A6A;
+  --info: #A0A0A8;
+
+  /* ==========================================
+     CHART COLORS
+     Blue-focused palette with urgency colors
+     ========================================== */
+
+  /* Chart color palette - Blue primary with complementary colors */
+  --chart-1: 217 91% 60%;        /* Primary Blue - main data series */
+  --chart-2: 200 70% 55%;        /* Light Blue - secondary data */
+  --chart-3: 180 50% 45%;        /* Teal/Cyan - complementary */
+  --chart-4: 45 90% 55%;         /* Yellow/Amber - warnings */
+  --chart-5: 150 60% 45%;        /* Green - success */
+  --chart-6: 0 70% 55%;          /* Red - errors/alerts */
+
+  /* ==========================================
+     LANDING PAGE THEME COLORS
+     ========================================== */
+
+  /* Primary blue palette for landing page */
+  --primary-50: #EFF6FF;
+  --primary-100: #DBEAFE;
+  --primary-500: #3B82F6;
+  --primary-600: #2563EB;
+  --primary-700: #1D4ED8;
+
+  /* Landing page accent colors */
+  --coral: #F97066;
+  --landing-success: #10B981;
+
+  /* ==========================================
+     BRILLIANT COLOR PALETTE (Landing Page)
+     ========================================== */
+
+  /* Brilliant Gray Scale */
+  --brilliant-gray-50: #F8F8F8;
+  --brilliant-gray-100: #F2F2F2;
+  --brilliant-gray-200: #E5E5E5;
+  --brilliant-gray-300: #CCCCCC;
+  --brilliant-gray-500: #999999;
+  --brilliant-gray-600: #808080;
+  --brilliant-gray-800: #4C4C4C;
+  --brilliant-gray-900: #333333;
+  --brilliant-gray-950: #0A0A0A;
+
+  /* Brilliant Accent Colors */
+  --brilliant-accent-yellow: #FCEEA4;
+  --brilliant-accent-purple: #9D7BF5;
+  --brilliant-accent-red: #F43F5E;
+  --brilliant-accent-orange: #FBBF24;
+
+  /* ==========================================
+     SHADOWS
+     ========================================== */
+
+  /* iOS-like smooth shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+
+  /* Landing page blue shadows */
+  --shadow-blue: 0 4px 14px rgba(59, 130, 246, 0.25);
+  --shadow-blue-lg: 0 8px 25px rgba(59, 130, 246, 0.35);
+
+  /* ==========================================
+     BRILLIANT SHADOWS
+     ========================================== */
+
+  /* Brilliant soft shadows for floating cards */
+  --brilliant-shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --brilliant-shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --brilliant-shadow-focus: 0 0 0 3px rgba(66, 153, 225, 0.6);
+
+  /* ==========================================
+     SPACING
+     ========================================== */
+
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0-5: 0.125rem;
+  --spacing-1: 0.25rem;
+  --spacing-1-5: 0.375rem;
+  --spacing-2: 0.5rem;
+  --spacing-2-5: 0.625rem;
+  --spacing-3: 0.75rem;
+  --spacing-3-5: 0.875rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-7: 1.75rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+
+  /* ==========================================
+     BORDER RADIUS
+     ========================================== */
+
+  --radius-none: 0;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  /* iOS often uses slightly rounder corners */
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+
+  /* Brilliant pill radius for buttons */
+  --radius-pill: 999px;
+
+  /* ==========================================
+     TRANSITIONS
+     ========================================== */
+
+  --transition-fast: 150ms;
+  --transition-base: 300ms;
+  /* Slower, smoother iOS feel */
+  --transition-slow: 500ms;
+  --transition-slower: 700ms;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-6: var(--chart-6);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+
+/* Serif font for headlines (Mapped to Sans for iOS native feel) */
+.font-serif {
+  font-family: var(--font-sans);
+}
+
+/* Display font for headlines (Landing page) */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Body font for text (Landing page) */
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Sans-serif for body text */
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* DM Serif Display for editorial landing page headings */
+.font-serif-display {
+  font-family: var(--font-serif-display);
+}
+
+/* Monospace for code */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Montserrat — logo/brand (landing Navbar, quiz header) */
+.font-montserrat {
+  font-family: var(--font-montserrat), "Montserrat", sans-serif;
+}
+
+/* Signature font */
+.font-cursive {
+  font-family: var(--font-signature), cursive;
+}
+
+/* ============================================
+   COLOR UTILITIES (Dynamic theme colors)
+   ============================================ */
+
+/* Background colors */
+.bg-background {
+  background-color: var(--background);
+}
+
+.bg-card {
+  background-color: var(--card);
+}
+
+.bg-muted {
+  background-color: var(--muted);
+}
+
+/* Text colors */
+.text-foreground {
+  color: var(--foreground);
+}
+
+.text-card-foreground {
+  color: var(--card-foreground);
+}
+
+.text-muted-foreground {
+  color: var(--muted-foreground);
+}
+
+/* Border color */
+.border-border {
+  border-color: var(--border);
+}
+
+/* Semantic color utilities */
+.text-success {
+  color: var(--success);
+}
+
+.text-error {
+  color: var(--error);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.bg-success {
+  background-color: var(--success);
+}
+
+.bg-error {
+  background-color: var(--error);
+}
+
+.bg-warning {
+  background-color: var(--warning);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar generally (no-scrollbar utility) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area inset for mobile notches */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ============================================
+   LESSON VIEW SPECIFIC
+   ============================================ */
+
+/* Hide bottom nav in lesson view */
+body:has(.lesson-view-active) #platform-root > nav {
+  display: none !important;
+}
+
+/* ============================================
+   ANIMATIONS (iOS Spring Physics)
+   ============================================ */
+
+/**
+ * iOS Spring Animations
+ *
+ * PURPOSE: Native iOS feel using spring physics per Apple's HIG
+ *
+ * DESIGN RATIONALE:
+ * - iOS uses spring physics for natural, fluid motion
+ * - Stiffness 300-500 + damping 25-30 creates snappy but smooth animations
+ * - These match iOS native app behavior
+ *
+ * @see Apple HIG: https://developer.apple.com/design/human-interface-guidelines/motion
+ */
+
+/* Fade in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in animation */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/**
+ * Spring In Animation
+ *
+ * PURPOSE: iOS-style spring entrance with overshoot for natural feel
+ *
+ * DESIGN: Scales from 0.9 to 1.02, then settles at 1.0
+ * - 50%: Overshoot to 1.02 creates "pop" effect
+ * - Cubic-bezier approximates iOS spring physics
+ * - Use for cards, modals, and important elements
+ */
+@keyframes spring-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/**
+ * Slide Up iOS Animation
+ *
+ * PURPOSE: iOS-style slide up with easing
+ *
+ * DESIGN: Elements slide up from 20px below
+ * - Cubic-bezier matches iOS native easing curves
+ * - Faster than standard slide-up for iOS feel
+ * - Use for page content, list items, sheets
+ */
+@keyframes slide-up-ios {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Pulse animation for current lesson indicator */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 var(--primary);
+  }
+
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 8px var(--primary);
+  }
+}
+
+/* Slide up animation */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fade-in var(--transition-base) ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in var(--transition-slow) ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up var(--transition-slow) ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes button-sheen {
+  0% {
+    transform: translateX(-180%) skewX(-24deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.95;
+  }
+  42% {
+    transform: translateX(220%) skewX(-24deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(220%) skewX(-24deg);
+    opacity: 0;
+  }
+}
+
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -30%;
+  width: 34%;
+  height: 140%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 28%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.18) 72%,
+    transparent 100%
+  );
+  filter: blur(1px);
+  pointer-events: none;
+  animation: button-sheen 2.15s ease-out infinite;
+}
+
+/**
+ * iOS Animation Utilities
+ *
+ * PURPOSE: iOS-native animation classes
+ *
+ * DESIGN: Matches iOS spring physics and timing
+ * - spring-in: 0.5s with overshoot for entrance
+ * - slide-up-ios: 0.4s with iOS easing
+ */
+.animate-spring-in {
+  animation: spring-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.animate-slide-up-ios {
+  animation: slide-up-ios 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Slow pulse animation for feedback flag */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* ============================================
+   LANDING PAGE ANIMATIONS
+   ============================================ */
+
+/**
+ * Landing Page Animations
+ *
+ * PURPOSE: Engaging animations for the public landing / hero surfaces
+ *
+ * DESIGN: Smooth, playful animations that draw attention
+ * - float: Gentle up/down motion for visual interest
+ * - float-delayed: Offset float animation for variety
+ * - fade-in-up: Content entrance animation
+ * - ticker: Infinite scroll for marquee elements
+ */
+
+/* Float animation for decorative elements */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(4px) rotate(-1deg);
+  }
+}
+
+/* Delayed float animation for variety */
+@keyframes float-delayed {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(6px) rotate(-1.5deg);
+  }
+
+  66% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+}
+
+/* Fade in from below animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ticker animation for infinite scroll */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Landing page animation utilities */
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+}
+
+/* Gentle float for hero tags — much subtler than .animate-float */
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+.animate-float-gentle {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-ticker {
+  animation: ticker 30s linear infinite;
+}
+
+/* ============================================
+   FOCUS STYLES (Accessibility)
+   ============================================ */
+
+/* Focus ring using theme color */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Remove default outline but keep focus visible */
+*:focus {
+  outline: none;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+/* Container constraints */
+.container-mobile {
+  max-width: 448px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 448px) {
+  .container-mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* ============================================
+   LANDING PAGE MAX-WIDTH UTILITIES
+   ============================================ */
+
+.max-w-content {
+  max-width: 1200px;
+}
+
+.max-w-narrow {
+  max-width: 720px;
+}
+
+.max-w-hero-text {
+  max-width: 800px;
+}
+
+/* ============================================
+   BRILLIANT DESIGN UTILITIES
+   ============================================ */
+
+/* Serif font for editorial headings */
+.font-brilliant-serif {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Brilliant Gray Scale */
+.bg-brilliant-gray-50 {
+  background-color: var(--brilliant-gray-50);
+}
+.bg-brilliant-gray-100 {
+  background-color: var(--brilliant-gray-100);
+}
+.bg-brilliant-gray-950 {
+  background-color: var(--brilliant-gray-950);
+}
+
+.text-brilliant-gray-800 {
+  color: var(--brilliant-gray-800);
+}
+.text-brilliant-gray-600 {
+  color: var(--brilliant-gray-600);
+}
+.text-brilliant-gray-900 {
+  color: var(--brilliant-gray-900);
+}
+
+/* Brilliant Accents */
+.bg-brilliant-yellow {
+  background-color: var(--brilliant-accent-yellow);
+}
+.bg-brilliant-purple {
+  background-color: var(--brilliant-accent-purple);
+}
+
+.border-brilliant-gray-200 {
+  border-color: var(--brilliant-gray-200);
+}
+
+/* Brilliant Pill Radius */
+.rounded-brilliant-pill {
+  border-radius: var(--radius-pill);
+}
+
+/* Brilliant Soft Shadows */
+.shadow-brilliant-soft {
+  box-shadow: var(--brilliant-shadow-soft);
+}
+.shadow-brilliant-subtle {
+  box-shadow: var(--brilliant-shadow-subtle);
+}
+
+/* Brilliant Container */
+.container-brilliant {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 640px) {
+  .container-brilliant {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* ============================================
+   QUIZ UTILITIES - Global CSS for Quiz Components
+   ============================================ */
+
+/**
+ * Quiz Utilities
+ *
+ * PURPOSE: Global CSS utilities to eliminate duplicate styled-jsx patterns across quiz components
+ *
+ * CONTEXT: Quiz components (SingleChoice, MultipleChoice, QuizOptionButton, SubmitButton, etc.)
+ * were using identical styled-jsx patterns for common UI elements. These utilities provide
+ * reusable classes that match the iOS native app design system.
+ *
+ * KEY UTILITIES:
+ * - Container max-width (480px) for mobile-first layout
+ * - Button hover/active states (opacity, transform)
+ * - Input focus states (border color, box-shadow)
+ * - Error states (border, background, shadow)
+ * - Transitions (smooth, iOS-like)
+ * - Typography (question text, labels, hints)
+ * - Spacing (gaps, padding, margins)
+ *
+ * DESIGN RATIONALE:
+ * - WHY global utilities: Eliminates ~500+ lines of duplicate styled-jsx code
+ * - WHY specific class names: Avoids conflicts with Tailwind utilities (quiz- prefix)
+ * - WHY CSS variables: Maintains consistency with quizTokens design system
+ * - WHY transition values: Matches iOS spring physics and timing
+ *
+ * USAGE:
+ * Add these classes to your JSX elements instead of styled-jsx:
+ * - quiz-container: Max-width 480px, centered, auto margins
+ * - quiz-btn-hover: Hover opacity 0.9, active scale 0.98
+ * - quiz-input-focus: Focus ring with blue box-shadow
+ * - quiz-error: Error border and background
+ *
+ * @see quizTokens for color/spacing values
+ * @see SingleChoice, MultipleChoice for usage examples
+ */
+
+/* ============================================
+   CONTAINER UTILITIES
+   ============================================ */
+
+/**
+ * Quiz Container
+ *
+ * PURPOSE: Constrain quiz content to 480px max-width with centering
+ *
+ * USAGE: <div className="quiz-container">...</div>
+ *
+ * DESIGN: Matches mobile-first design constraint used across all quiz pages
+ */
+.quiz-container {
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+}
+
+@media (max-width: 640px) {
+  .quiz-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/**
+ * Quiz Container Wide (760px)
+ *
+ * PURPOSE: Wider container for email capture page
+ *
+ * USAGE: <div className="quiz-container-wide">...</div>
+ */
+.quiz-container-wide {
+  width: 100%;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+}
+
+@media (max-width: 640px) {
+  .quiz-container-wide {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   BUTTON UTILITIES
+   ============================================ */
+
+/**
+ * Quiz Button Hover
+ *
+ * PURPOSE: Hover and active states for buttons
+ *
+ * USAGE: Add class to any button element
+ *
+ * DESIGN: iOS-like feedback with opacity change and scale transform
+ */
+.quiz-btn-hover {
+  transition:
+    opacity 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.quiz-btn-hover:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(2px);
+  box-shadow:
+    0 4px 0 0 #0051d5,
+    0 8px 25px rgba(0, 81, 213, 0.2);
+}
+
+.quiz-btn-hover:active:not(:disabled) {
+  opacity: 0.85;
+  transform: translateY(4px);
+  box-shadow:
+    0 2px 0 0 #0041a8,
+    0 4px 15px rgba(0, 65, 168, 0.2);
+}
+
+/**
+ * Quiz Button Base
+ *
+ * PURPOSE: Base styles for quiz buttons
+ *
+ * USAGE: <button className="quiz-btn-base">Continue</button>
+ */
+.quiz-btn-base {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  letter-spacing: -0.3px;
+}
+
+/**
+ * Quiz Button Disabled
+ *
+ * PURPOSE: Disabled state for buttons
+ *
+ * USAGE: Add class to disabled buttons
+ */
+.quiz-btn-disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.quiz-btn-disabled:disabled {
+  cursor: not-allowed;
+}
+
+/* ============================================
+   INPUT UTILITIES
+   ============================================ */
+
+/**
+ * Quiz Input Focus
+ *
+ * PURPOSE: Focus state for input fields
+ *
+ * USAGE: Add class to input elements
+ *
+ * DESIGN: Blue focus ring matching iOS design
+ */
+.quiz-input-focus:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.25);
+}
+
+/**
+ * Quiz Input Base
+ *
+ * PURPOSE: Base styles for input fields
+ *
+ * USAGE: <input className="quiz-input-base" />
+ */
+.quiz-input-base {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f3f4f6;
+  color: #111827;
+  transition: all 0.2s ease;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+}
+
+.quiz-input-base::placeholder {
+  color: #9ca3af;
+}
+
+.quiz-input-base:disabled {
+  background: #e5e7eb;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   ERROR STATES
+   ============================================ */
+
+/**
+ * Quiz Error Input
+ *
+ * PURPOSE: Error state for input fields
+ *
+ * USAGE: Add class to input elements with errors
+ */
+.quiz-error-input {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+.quiz-error-input:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.25) !important;
+}
+
+/**
+ * Quiz Error Text
+ *
+ * PURPOSE: Styling for error messages
+ *
+ * USAGE: <p className="quiz-error-text">Error message</p>
+ */
+.quiz-error-text {
+  margin-top: 8px;
+  margin-left: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ef4444;
+}
+
+/**
+ * Quiz Error Banner
+ *
+ * PURPOSE: Inline error banner for form validation
+ *
+ * USAGE: <div className="quiz-error-banner">Error message</div>
+ */
+.quiz-error-banner {
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  color: #ef4444;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+
+/**
+ * Quiz Question Text
+ *
+ * PURPOSE: Styling for quiz question headlines
+ *
+ * USAGE: <h2 className="quiz-question-text">Question text</h2>
+ */
+.quiz-question-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+}
+
+@media (max-width: 640px) {
+  .quiz-question-text {
+    font-size: 20px;
+  }
+}
+
+/**
+ * Quiz Subtext
+ *
+ * PURPOSE: Styling for question subtext/descriptions
+ *
+ * USAGE: <p className="quiz-subtext">Subtext</p>
+ */
+.quiz-subtext {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 640px) {
+  .quiz-subtext {
+    font-size: 15px;
+  }
+}
+
+/**
+ * Quiz Hint Text
+ *
+ * PURPOSE: Styling for hint text (e.g., "Choose all that apply")
+ *
+ * USAGE: <p className="quiz-hint">Hint text</p>
+ */
+.quiz-hint {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6b7280;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 640px) {
+  .quiz-hint {
+    font-size: 13px;
+  }
+}
+
+/**
+ * Quiz Headline (Large)
+ *
+ * PURPOSE: Large headline for capture pages
+ *
+ * USAGE: <h1 className="quiz-headline">Headline</h1>
+ */
+.quiz-headline {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 640px) {
+  .quiz-headline {
+    font-size: 28px;
+  }
+}
+
+/* ============================================
+   SPACING UTILITIES
+   ============================================ */
+
+/**
+ * Quiz Options Container
+ *
+ * PURPOSE: Container for option buttons with consistent gap
+ *
+ * USAGE: <div className="quiz-options-container">...</div>
+ */
+.quiz-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .quiz-options-container {
+    gap: 10px;
+  }
+}
+
+/**
+ * Quiz Question Header
+ *
+ * PURPOSE: Header section for questions with proper spacing
+ *
+ * USAGE: <div className="quiz-question-header">...</div>
+ */
+.quiz-question-header {
+  text-align: center;
+  margin-top: 56px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 640px) {
+  .quiz-question-header {
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+}
+
+/* ============================================
+   TRANSITION UTILITIES
+   ============================================ */
+
+/**
+ * Quiz Transition Base
+ *
+ * PURPOSE: Consistent transition timing for all quiz elements
+ *
+ * USAGE: Add to elements that need smooth transitions
+ */
+.quiz-transition {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
+}
+
+/**
+ * Quiz Transition Fast
+ *
+ * PURPOSE: Faster transition for hover/active states
+ *
+ * USAGE: Add to buttons for responsive feedback
+ */
+.quiz-transition-fast {
+  transition:
+    transform 0.1s ease,
+    opacity 0.1s ease;
+}
+
+/* ============================================
+   OPTION BUTTON UTILITIES
+   ============================================ */
+
+/**
+ * Quiz Option Button Base
+ *
+ * PURPOSE: Base styles for quiz option buttons
+ *
+ * USAGE: <button className="quiz-option-btn">...</button>
+ */
+.quiz-option-btn {
+  width: 100%;
+  min-height: 56px;
+  padding: 14px 20px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  letter-spacing: -0.3px;
+}
+
+.quiz-option-btn.selected {
+  background-color: #e5f1ff;
+  border-color: #007aff;
+  box-shadow:
+    0 6px 0 0 #007aff,
+    0 9px 20px rgba(0, 122, 255, 0.15);
+}
+
+.quiz-option-btn:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+/* ============================================
+   STICKY BUTTON UTILITIES
+   ============================================ */
+
+/**
+ * Quiz Sticky Button Content
+ *
+ * PURPOSE: Container for sticky button content
+ *
+ * USAGE: <div className="quiz-sticky-content">...</div>
+ */
+.quiz-sticky-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ============================================
+   LANDING PAGE UTILITIES
+   ============================================ */
+
+/**
+ * Landing Page Section Container
+ *
+ * PURPOSE: Consistent max-width and padding for all landing sections
+ * WHY 960px: Tighter alignment; landing content stays readable and aligned
+ */
+.section-container {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/**
+ * Landing Page Section Padding
+ *
+ * PURPOSE: Consistent vertical rhythm between landing sections
+ */
+.section-padding {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/**
+ * Shimmer Effect
+ *
+ * PURPOSE: Diagonal gradient sweep for premium card effects
+ * WHY ::after: Overlay doesn't interfere with card content
+ */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(-45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(-45deg);
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/**
+ * Scroll Animation
+ *
+ * PURPOSE: Entrance animation triggered by IntersectionObserver
+ * WHY opacity+transform: GPU-accelerated, smooth on all devices
+ * WHY .is-visible: Class added by useScrollAnimation hook on intersection
+ */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/**
+ * Reduced Motion
+ *
+ * PURPOSE: Accessibility - disable all animations for users who prefer reduced motion
+ * WHY: Some users experience motion sickness or have vestibular disorders
+ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed,
+  .animate-fade-in-up,
+  .animate-ticker,
+  .animate-on-scroll,
+  .shimmer::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/**
+ * Pill Button Variants - Landing Page CTAs
+ *
+ * PURPOSE: Primary and secondary pill-shaped buttons for landing page CTAs
+ * USAGE: Add className="btn-pill-primary" or "btn-pill-secondary"
+ * STYLE: Blue 3D block-shadow style matching the project's button design language
+ */
+.btn-pill-primary {
+  @apply font-body font-semibold rounded-full transition-all duration-150 cursor-pointer;
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.9375rem;
+  background-color: hsl(217 91% 60%);
+  color: white;
+  border-bottom: 4px solid hsl(224 76% 48%);
+  box-shadow: 0 2px 8px hsl(217 91% 60% / 0.25);
+  text-decoration: none;
+}
+.btn-pill-primary:hover {
+  background-color: hsl(217 83% 54%);
+}
+.btn-pill-primary:active {
+  border-bottom-width: 2px;
+  transform: translateY(2px);
+}
+
+.btn-pill-secondary {
+  @apply font-body font-semibold rounded-full transition-all duration-150 cursor-pointer;
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.9375rem;
+  background-color: hsl(var(--background));
+  color: hsl(var(--gray-900));
+  border: 1px solid hsl(var(--gray-200));
+  border-bottom: 4px solid hsl(var(--gray-300));
+  box-shadow: 0 2px 8px hsl(var(--gray-200) / 0.5);
+  text-decoration: none;
+}
+.btn-pill-secondary:hover {
+  border-color: hsl(var(--gray-300));
+  border-bottom-color: hsl(var(--gray-400));
+}
+.btn-pill-secondary:active {
+  border-bottom-width: 2px;
+  transform: translateY(2px);
+}
+
+/**
+ * Navbar Button Variants - Compact for Navigation
+ *
+ * PURPOSE: Smaller button variants specifically for navbar use
+ * USAGE: Add className="btn-navbar-primary" or "btn-navbar-secondary"
+ */
+.btn-navbar-primary {
+  @apply font-body font-semibold rounded-full transition-all duration-150 cursor-pointer;
+  padding: 0.375rem 0.75rem; /* py-1.5 px-3 */
+  font-size: 0.625rem; /* text-[10px] */
+  background-color: hsl(217 91% 60%);
+  color: white;
+  border-bottom: 3px solid hsl(224 76% 48%);
+  box-shadow: 0 1px 4px hsl(217 91% 60% / 0.2);
+}
+.btn-navbar-primary:hover {
+  background-color: hsl(217 83% 54%);
+}
+.btn-navbar-primary:active {
+  border-bottom-width: 1px;
+  transform: translateY(2px);
+}
+
+@media (min-width: 640px) {
+  .btn-navbar-primary {
+    padding: 0.5rem 1rem; /* py-2 px-4 */
+    font-size: 0.75rem; /* text-xs */
+  }
+}
+
+.btn-navbar-secondary {
+  @apply font-body font-semibold rounded-full transition-all duration-150 cursor-pointer;
+  padding: 0.375rem 0.75rem; /* py-1.5 px-3 */
+  font-size: 0.625rem; /* text-[10px] */
+  background-color: hsl(var(--background));
+  color: hsl(var(--gray-900));
+  border: 1px solid hsl(var(--gray-200));
+  border-bottom: 3px solid hsl(var(--gray-300));
+  box-shadow: 0 1px 4px hsl(var(--gray-200) / 0.5);
+}
+.btn-navbar-secondary:hover {
+  border-color: hsl(var(--gray-300));
+  border-bottom-color: hsl(var(--gray-400));
+}
+.btn-navbar-secondary:active {
+  border-bottom-width: 1px;
+  transform: translateY(2px);
+}
+
+@media (min-width: 640px) {
+  .btn-navbar-secondary {
+    padding: 0.5rem 1rem; /* py-2 px-4 */
+    font-size: 0.75rem; /* text-xs */
+  }
+}
+
+/*---break---
+ */
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.55 0.2 260);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.55 0.2 260);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  /* Chart colors - Blue-focused palette with urgency colors */
+  --chart-1: oklch(0.55 0.2 250); /* Primary Blue - main data series */
+  --chart-2: oklch(0.65 0.15 220); /* Light Blue - secondary data */
+  --chart-3: oklch(0.6 0.12 200); /* Teal/Cyan - complementary data */
+  --chart-4: oklch(0.75 0.15 85); /* Yellow/Amber - warnings, attention */
+  --chart-5: oklch(0.65 0.15 150); /* Green - success, positive metrics */
+  --chart-6: oklch(0.6 0.2 25); /* Red - errors, alerts */
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.55 0.2 260);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+/*---break---
+ */
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  /* Chart colors - Blue-focused palette with urgency colors (dark mode) */
+  --chart-1: oklch(0.65 0.2 250); /* Primary Blue - brighter for dark mode */
+  --chart-2: oklch(0.7 0.15 220); /* Light Blue */
+  --chart-3: oklch(0.65 0.12 200); /* Teal/Cyan */
+  --chart-4: oklch(0.8 0.15 85); /* Yellow/Amber */
+  --chart-5: oklch(0.7 0.15 150); /* Green */
+  --chart-6: oklch(0.65 0.2 25); /* Red - brighter for dark mode */
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+/*---break---
+ */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes quiz-option-pulse {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.012);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes quiz-logo-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+
+@keyframes checkout-course-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+
+@keyframes checkout-navbar-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+  50% {
+    transform: translateY(-1px);
+    filter: brightness(1.04);
+  }
+}

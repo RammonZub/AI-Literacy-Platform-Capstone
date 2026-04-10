@@ -1,0 +1,2 @@
+-- Seed file — intentionally empty.
+-- The schema migration creates all tables required by the platform.

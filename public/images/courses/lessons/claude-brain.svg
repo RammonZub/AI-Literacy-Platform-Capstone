@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <!-- Brain outline - Claude orange -->
+  <path d="M400 150 C350 150, 300 200, 300 280 C300 350, 320 400, 350 420 L350 450 C350 470, 380 480, 420 480 C460 480, 500 470, 520 450 L520 420 C550 400, 580 350, 580 280 C580 200, 530 150, 480 150 C440 150, 420 160, 400 150 Z"
+        fill="none" stroke="#D9775A" stroke-width="4"/>
+  <!-- Organic pathways - Claude orange/terracotta -->
+  <circle cx="400" cy="250" r="10" fill="#D9775A"/>
+  <circle cx="480" cy="280" r="10" fill="#D9775A"/>
+  <circle cx="440" cy="320" r="10" fill="#D9775A"/>
+  <circle cx="520" cy="350" r="10" fill="#D9775A"/>
+  <circle cx="360" cy="380" r="10" fill="#D9775A"/>
+  <!-- Flowing connection curves -->
+  <path d="M400 250 Q440 265, 480 280" fill="none" stroke="#D9775A" stroke-width="3"/>
+  <path d="M480 280 Q460 300, 440 320" fill="none" stroke="#D9775A" stroke-width="3"/>
+  <path d="M440 320 Q480 335, 520 350" fill="none" stroke="#D9775A" stroke-width="3"/>
+  <path d="M440 320 Q400 350, 360 380" fill="none" stroke="#D9775A" stroke-width="3"/>
+  <path d="M480 280 Q500 315, 520 350" fill="none" stroke="#D9775A" stroke-width="3"/>
+  <!-- Leaf accents -->
+  <path d="M600 200 Q620 180, 640 200 Q620 220, 600 200" fill="#CC785C" opacity="0.6"/>
+  <path d="M700 280 Q720 260, 740 280 Q720 300, 700 280" fill="#CC785C" opacity="0.6"/>
+  <path d="M650 380 Q670 360, 690 380 Q670 400, 650 380" fill="#CC785C" opacity="0.6"/>
+  <!-- Root accents -->
+  <path d="M580 250 Q600 270, 620 250" fill="none" stroke="#CC785C" stroke-width="2" opacity="0.6"/>
+  <path d="M680 300 Q700 320, 720 300" fill="none" stroke="#CC785C" stroke-width="2" opacity="0.6"/>
+  <path d="M630 350 Q650 370, 670 350" fill="none" stroke="#CC785C" stroke-width="2" opacity="0.6"/>
+</svg>

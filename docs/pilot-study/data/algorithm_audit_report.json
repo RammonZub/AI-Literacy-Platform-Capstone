@@ -1,0 +1,123 @@
+{
+  "generatedAtIso": "2026-04-10T14:40:53.831Z",
+  "runTimeSeconds": 62.985,
+  "totalCombinations": 7372800,
+  "optionDomainSizes": [
+    {
+      "questionId": "q1",
+      "count": 4
+    },
+    {
+      "questionId": "q2",
+      "count": 6
+    },
+    {
+      "questionId": "q3",
+      "count": 4
+    },
+    {
+      "questionId": "q4",
+      "count": 4
+    },
+    {
+      "questionId": "q5",
+      "count": 4
+    },
+    {
+      "questionId": "q6",
+      "count": 5
+    },
+    {
+      "questionId": "q7",
+      "count": 5
+    },
+    {
+      "questionId": "q8",
+      "count": 4
+    },
+    {
+      "questionId": "q9",
+      "count": 3
+    },
+    {
+      "questionId": "q10",
+      "count": 4
+    },
+    {
+      "questionId": "q11",
+      "count": 4
+    }
+  ],
+  "verification": {
+    "rank1PercentagesSum": 100,
+    "rank1PercentagesSumIs100": true,
+    "pathLengthMatchesQ10Marginal": true,
+    "expectedPathLengthCountsFromQ10": {
+      "3": 1843200,
+      "5": 1843200,
+      "7": 3686400
+    },
+    "actualPathLengthCounts": {
+      "3": 1843200,
+      "5": 1843200,
+      "7": 3686400
+    }
+  },
+  "rank1ModuleCounts": {
+    "ai_foundations": 2018030,
+    "productivity_basics": 2243362,
+    "prompt_engineering": 2714723,
+    "content_creation": 149,
+    "chatgpt": 84762,
+    "claude": 0,
+    "gemini": 0,
+    "midjourney": 0,
+    "workflows": 311774,
+    "28_day_challenge": 0
+  },
+  "rank1ModulePercent": {
+    "ai_foundations": 27.371284,
+    "productivity_basics": 30.427544,
+    "prompt_engineering": 36.820787,
+    "content_creation": 0.002021,
+    "chatgpt": 1.149658,
+    "claude": 0,
+    "gemini": 0,
+    "midjourney": 0,
+    "workflows": 4.228706,
+    "28_day_challenge": 0
+  },
+  "anyRankModuleInPathCounts": {
+    "ai_foundations": 6524118,
+    "productivity_basics": 7106992,
+    "prompt_engineering": 7025024,
+    "content_creation": 3575419,
+    "chatgpt": 5936311,
+    "claude": 347388,
+    "gemini": 1317199,
+    "midjourney": 1209648,
+    "workflows": 5798773,
+    "28_day_challenge": 1709528
+  },
+  "overrideRuleFireCounts": {
+    "beginner_novice_or_no_tools_boost": 3225600,
+    "intermediate_ai_adjust": 3686400,
+    "independent_profession_boost": 3686400,
+    "time_for_challenge": 3686400
+  },
+  "pathLengthDistribution": {
+    "3": 1843200,
+    "5": 1843200,
+    "7": 3686400
+  },
+  "personaDistribution": {
+    "threatened_performer": 2949120,
+    "business_leverager": 2949120,
+    "curious_explorer": 1474560,
+    "unknown": 0
+  },
+  "customerProfileDistribution": {
+    "employee": 3686400,
+    "independent": 3686400
+  }
+}
