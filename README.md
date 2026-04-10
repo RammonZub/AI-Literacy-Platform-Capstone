@@ -24,6 +24,21 @@ All curriculum content (10 modules, 214 lessons) is authored as TypeScript data 
 
 ---
 
+## Quick Reviewer Test Flow
+
+Use the live deployment linked in the repository or the configured production domain.
+
+1. Open the landing page.
+2. Start the onboarding assessment.
+3. Complete all 11 questions and review the personalized recommendation.
+4. Create an account. Any valid email format is accepted because email verification is not required in this capstone deployment.
+5. After sign-up, confirm you are redirected into the platform and that your recommended path is visible.
+6. Open one recommended module, complete one lesson, and finish the associated activity or quiz.
+
+This verifies the full thesis-critical learner journey: landing page → onboarding → account creation → personalized platform access → lesson completion.
+
+---
+
 ## Project Structure
 
 ```
